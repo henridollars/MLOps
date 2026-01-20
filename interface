@@ -1,0 +1,74 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "f4db5075",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "SyntaxError",
+     "evalue": "invalid syntax (1163581775.py, line 1)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;36m  Cell \u001b[1;32mIn[2], line 1\u001b[1;36m\u001b[0m\n\u001b[1;33m    <!doctype html>\u001b[0m\n\u001b[1;37m    ^\u001b[0m\n\u001b[1;31mSyntaxError\u001b[0m\u001b[1;31m:\u001b[0m invalid syntax\n"
+     ]
+    }
+   ],
+   "source": [
+    "<!doctype html>\n",
+    "<html>\n",
+    "  <head>\n",
+    "    <meta charset=\"utf-8\" />\n",
+    "    <title>Scoring Interface</title>\n",
+    "  </head>\n",
+    "  <body>\n",
+    "    <h1>Score Calculator</h1>\n",
+    "\n",
+    "    <label>Item ID: <input id=\"itemId\" type=\"number\" value=\"10\" /></label>\n",
+    "    <br /><br />\n",
+    "    <label>Quantity: <input id=\"qty\" type=\"number\" value=\"3\" /></label>\n",
+    "    <br /><br />\n",
+    "    <button onclick=\"getScore()\">Get score</button>\n",
+    "\n",
+    "    <pre id=\"result\"></pre>\n",
+    "\n",
+    "    <script>\n",
+    "      async function getScore() {\n",
+    "        const itemId = document.getElementById(\"itemId\").value;\n",
+    "        const q = document.getElementById(\"qty\").value;\n",
+    "\n",
+    "        const url = `http://127.0.0.1:8000/score?item_id=${itemId}&q=${q}`;\n",
+    "        const res = await fetch(url);\n",
+    "        const data = await res.json();\n",
+    "\n",
+    "        document.getElementById(\"result\").textContent = JSON.stringify(data, null, 2);\n",
+    "      }\n",
+    "    </script>\n",
+    "  </body>\n",
+    "</html>"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
