@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab2-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab2-api
+  template:
+    metadata:
+      labels:
+        app: lab2-api
+    spec:
+      containers:
+        - name: lab2-api
+          image: mlops-lab2:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
